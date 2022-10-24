@@ -17,9 +17,8 @@ class TestBaseModel(unittest.TestCase):
     def test_to_dict(self):
         """Test of the to_dict method"""
         x = BaseModel()
-        dic = x.__dict__
         new_dic = x.to_dict()
-        self.assertNotEqual(dic, new_dic)
+        self.assertTrue(type(new_dic) == dict)
 
     def test_self_id(self):
         """Test of the attribute id"""
