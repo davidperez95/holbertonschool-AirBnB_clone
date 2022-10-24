@@ -27,7 +27,7 @@ class BaseModel:
         This method modify and convert all attributes to
         string and return dictionaty
         """
-        dic = self.__dict__
+        dic = self.__dict__.copy()
         dic["__class__"] = __class__.__name__
         dic["updated_at"] = datetime.datetime.isoformat(self.updated_at)
         dic["created_at"] = datetime.datetime.isoformat(self.created_at)
