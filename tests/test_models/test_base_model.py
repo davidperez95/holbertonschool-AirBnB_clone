@@ -38,6 +38,4 @@ class TestBaseModel(unittest.TestCase):
 
     def test_str(self):
         """Test of the str method"""
-        x = BaseModel()
-        string = x.__str__()
-        self.assertTrue(type(string) == str)
+        self.assertTrue(hasattr(BaseModel, "__str__"))
