@@ -16,9 +16,11 @@ class TestBaseModel(unittest.TestCase):
 
     def test_to_dict(self):
         """Test of the to_dict method"""
-        x = BaseModel()
-        new_dic = x.to_dict()
-        self.assertTrue(type(new_dic) == dict)
+        my_BaseModel = BaseModel()
+        my_dict = my_BaseModel.to_dict()
+        self.assertIs(type(my_dict), dict)
+        self.assertIs(type(my_dict['created_at']), str)
+        self.assertIs(type(my_dict['updated_at']), str)
 
     def test_self_id(self):
         """Test of the attribute id"""
