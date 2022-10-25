@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 import uuid
 import datetime
+from models import storage
 """Module BaseModel"""
 
 
@@ -15,13 +16,14 @@ class BaseModel:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.datetime.now()
             self.updated_at = datetime.datetime.now()
+            storage.new(self)
         else:
             if "id" in kwargs:
                 self.id = kwargs["id"]
             if "created_at" in kwargs:
-                self.created_at = kwargs["created_at"]
+                self.created_at = str(kwargs["created_at"])
             if "udpated_at" in kwargs:
-                self.updated_at = kwargs["updated_at"]
+                self.updated_at = str(kwargs["updated_at"])
 
     def __str__(self):
         """This method return a string class"""
@@ -30,6 +32,7 @@ class BaseModel:
     def save(self):
         """This method update of the instance"""
         self.updated_at = datetime.datetime.now()
+        storage.save()
 
     def to_dict(self):
         """
