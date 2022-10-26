@@ -7,8 +7,7 @@ class HBNBCommand(cmd.Cmd):
     """Entry point for the console"""
 
     prompt = "(hbnb) "
-
-    def do_EOF(self):
+    def do_EOF(self, line):
         """Implement the EOF"""
         return True
 
@@ -16,6 +15,10 @@ class HBNBCommand(cmd.Cmd):
         """Quit command to exit the program"""
         "quit"
         return True
+
+    def emptyline(self):
+        """Change the empty line method"""
+        return False
 
 
 if __name__ == '__main__':
