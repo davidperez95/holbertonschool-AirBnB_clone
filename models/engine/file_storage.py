@@ -14,23 +14,28 @@ class FileStorage():
 
     def all(self):
         """returns the dictionary __objects"""
-        return FileStorage.__objects
+        return self.__objects
 
     def new(self, obj):
         """sets in __objects the obj with key <obj class name>.id"""
-        KEY_obj = f"{type(obj).__name__}.{obj.id}"
-        self.__objects[KEY_obj] = obj
+        key_obj = obj.__class__.__name__ + "." + obj.id
+        self.__objects[key_obj] = obj
 
     def save(self):
         """serializes __objects to the JSON file (path: __file_path)"""
-        with open(FileStorage.__file_path, "w", encoding="utf-8") as file:
-            json.dump(FileStorage.__objects, file)
+        json_dict = {}
+        for key in self.__objects:
+            json_dict[key] = self.__objects[key].to_dict()
+        with open(self.__file_path, "w", encoding="utf-8") as file:
+            json.dump(json_dict, file)
 
     def reload(self):
         """deserializes the JSON file to __objects"""
         try:
-            with open(FileStorage.__file_path, "r", encoding="utf-8") as file:
-                FileStorage.__objects = json.load(file)
+            with open(self.__file_path, "r", encoding="utf-8") as file:
+                for key, value in (json.load(file)).items():
+                    value = eval(value["__class__"])(**value)
+                    self.__objects[key] = value
         except:
             pass
 
@@ -42,8 +47,10 @@ new_file = FileStorage()
 new_file.new(new_obj1)
 new_file.new(new_obj2)
 print(new_file.all())
+print("before reload")
 new_file.save()
 new_file.reload()
-print
+print()
 print(new_file.all())
+print("after reload")
 """

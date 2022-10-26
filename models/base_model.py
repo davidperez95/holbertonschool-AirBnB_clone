@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 import uuid
 import datetime
-from models import storage
+import models
 """Module BaseModel"""
 
 
@@ -16,7 +16,7 @@ class BaseModel:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.datetime.now()
             self.updated_at = datetime.datetime.now()
-            storage.new(self)
+            models.storage.new(self)
         else:
             if "id" in kwargs:
                 self.id = kwargs["id"]
@@ -32,7 +32,7 @@ class BaseModel:
     def save(self):
         """This method update of the instance"""
         self.updated_at = datetime.datetime.now()
-        storage.save()
+        models.storage.save()
 
     def to_dict(self):
         """
