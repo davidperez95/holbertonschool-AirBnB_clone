@@ -38,4 +38,5 @@ class TestBaseModel(unittest.TestCase):
 
     def test_str(self):
         """Test of the str method"""
-        self.assertEqual(type(b1.id), str)
+        baseM = BaseModel()
+        self.assertEqual(type(baseM.id), str)
