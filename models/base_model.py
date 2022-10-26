@@ -15,14 +15,14 @@ class BaseModel:
         if kwargs:
             for key, value in kwargs.items():
                 if key == "updated_at" or key == "created_at":
-                    dt_obj = datetime.strptime(value, '%Y-%m-%dT%H:%M:%S.%f')
+                    dt_obj = datetime.datetime.strptime(value, '%Y-%m-%dT%H:%M:%S.%f')
                     setattr(self, key, dt_obj)
                 elif key != "__class__":
                     setattr(self, key, value)
         else:
             self.id = str(uuid.uuid4())
-            self.created_at = datetime.now()
-            self.updated_at = datetime.now()
+            self.created_at = datetime.datetime.now()
+            self.updated_at = datetime.datetime.now()
             models.storage.new(self)
 
     def __str__(self):
