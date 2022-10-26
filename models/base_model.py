@@ -12,18 +12,17 @@ class BaseModel:
     """
     def __init__(self, *args, **kwargs):
         """Instance constructor for the Base Model class"""
-        if len(kwargs) <= 0:
-            self.id = str(uuid.uuid4())
-            self.created_at = datetime.datetime.now()
-            self.updated_at = datetime.datetime.now()
-            models.storage.new(self)
-        else:
+        self.id = str(uuid.uuid4())
+        self.created_at = datetime.datetime.now()
+        self.updated_at = datetime.datetime.now()
+        if kwargs:
             if "id" in kwargs:
                 self.id = kwargs["id"]
             if "created_at" in kwargs:
-                self.created_at = str(kwargs["created_at"])
+                self.created_at = datetime.datetime.strptime(kwargs["created_at"], "%Y-%m-%dT%H:%M:%S.%f")
             if "udpated_at" in kwargs:
-                self.updated_at = str(kwargs["updated_at"])
+                self.updated_at = datetime.datetime.strptime(kwargs["updated_at"], "%Y-%m-%dT%H:%M:%S.%f")
+        models.storage.new(self)
 
     def __str__(self):
         """This method return a string class"""
@@ -39,8 +38,8 @@ class BaseModel:
         This method modify and convert all attributes to
         string and return dictionaty
         """
-        dic = self.__dict__.copy()
-        dic["__class__"] = __class__.__name__
-        dic["updated_at"] = datetime.datetime.isoformat(self.updated_at)
-        dic["created_at"] = datetime.datetime.isoformat(self.created_at)
-        return dic
+        new_dict = self.__dict__.copy()
+        new_dict["__class__"] = __class__.__name__
+        new_dict["updated_at"] = datetime.datetime.isoformat(self.updated_at)
+        new_dict["created_at"] = datetime.datetime.isoformat(self.created_at)
+        return new_dict
