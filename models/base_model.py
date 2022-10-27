@@ -27,7 +27,7 @@ class BaseModel:
 
     def __str__(self):
         """This method return a string class"""
-        return f"[BaseModel] ({self.id}) {self.__dict__}"
+        return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
 
     def save(self):
         """This method update of the instance"""
@@ -40,7 +40,7 @@ class BaseModel:
         string and return dictionaty
         """
         new_dict = self.__dict__.copy()
-        new_dict["__class__"] = __class__.__name__
+        new_dict["__class__"] = self.__class__.__name__
         new_dict["updated_at"] = datetime.datetime.isoformat(self.updated_at)
         new_dict["created_at"] = datetime.datetime.isoformat(self.created_at)
         return new_dict

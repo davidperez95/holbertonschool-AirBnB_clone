@@ -2,8 +2,9 @@
 """This module is the package entry point"""
 import cmd
 from models.base_model import BaseModel
+from models.user import User
 from models import storage
-list_class = ["BaseModel"]
+list_class = {"BaseModel": BaseModel, "User": User}
 
 
 class HBNBCommand(cmd.Cmd):
@@ -31,9 +32,11 @@ class HBNBCommand(cmd.Cmd):
         if not line in list_class:
             print("** class doesn't exist **")
             return False
-        new_inst = BaseModel()
-        new_inst.save()
-        print(new_inst.id)
+        for key, value in list_class.items():
+            if line == key:
+                new_inst = value()
+                new_inst.save()
+                print(new_inst.id)
         return False
 
     def do_show(self, line):
@@ -93,8 +96,9 @@ class HBNBCommand(cmd.Cmd):
                 print_list.append(str(value))
             print(print_list)
         elif line in list_class:
-            for value in all_dict.values():
-                print_list.append(str(value))
+            for key, value in all_dict.items():
+                if line in key:
+                    print_list.append(str(value))
             print(print_list)
         else:
             print("** class doesn't exist **")
@@ -133,15 +137,6 @@ class HBNBCommand(cmd.Cmd):
 
         for key, value in all_dict.items():
             if f"{args[0]}.{args[1]}" == key:
-                """
-                try:
-                    if type(args[3]) is int:
-                        setattr(value, args[2], int(args[3]))
-                    if type(args[3]) is float:
-                        setattr(value, args[2], float(args[3]))
-                    else:
-                        setattr(value, args[2], args[3].strip('"'))
-                """
                 setattr(value, args[2], args[3].strip('"'))
                 storage.save()
                 return False
