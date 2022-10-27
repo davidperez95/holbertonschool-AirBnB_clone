@@ -82,15 +82,23 @@ class HBNBCommand(cmd.Cmd):
         return False
 
     def do_all(self, line):
-        """"""
-        if not line in list_class:
-            print("** class doesn't exist **")
-            return False
+        """
+        Print all string of all instances
+        based or not on the class name
+        """
         all_dict = storage.all()
         print_list = []
-        for value in all_dict.values():
-            print_list.append(str(value))
-        print(print_list)
+        if line == "":
+            for value in all_dict.values():
+                print_list.append(str(value))
+            print(print_list)
+        elif line in list_class:
+            for value in all_dict.values():
+                print_list.append(str(value))
+            print(print_list)
+        else:
+            print("** class doesn't exist **")
+            return False
 
     def do_update(self, line):
         """
