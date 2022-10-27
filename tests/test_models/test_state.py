@@ -3,7 +3,7 @@
 from models.state import State
 import unittest
 
-class TestUserClass(unittest.TestCase):
+class TestStateClass(unittest.TestCase):
 
     def test_state_name(self):
         """test to check user name"""

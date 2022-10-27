@@ -3,7 +3,7 @@
 from models.city import City
 import unittest
 
-class TestUserClass(unittest.TestCase):
+class TestCityClass(unittest.TestCase):
 	
 	def test_city_name(self):
 		"""test to check user name"""
