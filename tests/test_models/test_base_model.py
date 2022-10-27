@@ -39,3 +39,6 @@ class TestBaseModel(unittest.TestCase):
     def test_str(self):
         """Test of the str method"""
         self.assertTrue(hasattr(BaseModel, "__str__"))
+
+if __name__ == '__main__':
+    unittest.main()

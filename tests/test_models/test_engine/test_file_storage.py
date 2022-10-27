@@ -51,3 +51,6 @@ class TestFileStorageClass(unittest.TestCase):
         key = "BaseModel.{}".format(MyModel.id)
         ob_dict = self.storage.all()
         self.assertFalse(ob_dict[key] is MyModel)
+
+if __name__ == "__main__":
+    unittest.main()
