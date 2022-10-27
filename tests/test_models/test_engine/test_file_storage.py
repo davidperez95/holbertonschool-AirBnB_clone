@@ -44,13 +44,10 @@ class TestFileStorageClass(unittest.TestCase):
             if file storage was documented
             and checks reload() method exists
         """
-        self.storage = FileStorage()
-        MyModel = BaseModel()
-        self.storage.save()
-        self.storage.reload()
-        key = "BaseModel.{}".format(MyModel.id)
-        ob_dict = self.storage.all()
-        self.assertFalse(ob_dict[key] is MyModel)
+        storage = FileStorage()
+        storage.save()
+        storage.reload()
+        self.assertTrue(len(storage.all()) > 0)
 
 if __name__ == "__main__":
     unittest.main()
