@@ -2,9 +2,9 @@
 from models.amenity import Amenity
 import unittest
 
-class TestAmenetyClass(unittest.TestCase):
+class TestAmenityClass(unittest.TestCase):
 
-    def test_amenety_name(self):
+    def test_amenity_name(self):
         """test to check user name"""
         User_1 = Amenity()
         self.assertEqual(type(User_1.id), str)
