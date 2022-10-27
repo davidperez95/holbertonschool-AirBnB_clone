@@ -6,9 +6,9 @@ class TestAmenityClass(unittest.TestCase):
 
     def test_amenity_name(self):
         """test to check user name"""
-        p1 = Amenity()
-        self.assertEqual(type(p1.id), str)
-        self.assertTrue(hasattr(p1, "name"))
+        User_1 = Amenity()
+        self.assertEqual(type(User_1.id), str)
+        self.assertTrue(hasattr(User_1, "name"))
 
 if __name__ == "__main__":
     unittest.main()
