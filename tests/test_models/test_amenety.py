@@ -4,7 +4,7 @@ import unittest
 
 class TestAmenetyClass(unittest.TestCase):
 
-    def test_user_name(self):
+    def test_amenety_name(self):
         """test to check user name"""
         User_1 = Amenity()
         self.assertEqual(type(User_1.id), str)
