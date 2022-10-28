@@ -225,4 +225,4 @@ User$
 
 |COLLABORATORS|
 -------------------------------------------------------------------------
-|  David Perez  |  Manuel E. Rodriguez C. |  Daniel S. Lopez O. |
+|  David A. Perez C. |  Manuel E. Rodriguez C. |  Daniel S. Lopez O. |
