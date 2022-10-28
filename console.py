@@ -234,9 +234,10 @@ class HBNBCommand(cmd.Cmd):
             number_id = args[0].strip('",')
             attribute = args[1].strip('",')
             value_attri = args[2].strip('"')
+            value_attri = f'"{value_attri}"'
             for key, value in all_dict.items():
                 if f"{name_class}.{number_id}" == key:
-                    setattr(str(value), str(attribute), str(value_attri))
+                    setattr(value, attribute, value_attri)
                     storage.save()
                     return False
             print("** no instance found **")
