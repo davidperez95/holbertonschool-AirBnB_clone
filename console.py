@@ -217,6 +217,29 @@ class HBNBCommand(cmd.Cmd):
                     return False
             print("** no instance found **")
             return False
+
+        if command.startswith(".update"):
+            args_command = command.strip('.update(""")')
+            args = args_command.split()
+            if len(args) < 1:
+                print("** instance id missiing **")
+                return False
+            if len(args) < 2:
+                print("** attribute name missing **")
+                return False
+            if len(args) < 3:
+                print("** value missing **")
+                return False
+            number_id = args[0].strip('",')
+            attribute = args[1].strip('"",')
+            value_attri = args[2].strip('"')
+            for key, value in all_dict.items():
+                if f"{name_class}.{number_id}" == key:
+                    setattr(value, attribute, value_attri)
+                    storage.save()
+                    return False
+            print("** no instance found **")
+            return False
         print(f"*** Unknown syntax: {line}")
         return False
 
