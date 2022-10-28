@@ -223,6 +223,6 @@ User$
 
 </details>
 
-|                 COLLABORATORS                     |
------------------------------------------------------
-|  David Perez  |  Manu Rodriguez  |  Daniel Lopez  |
+|COLLABORATORS|
+-------------------------------------------------------------------------
+|  David Perez  |  Manuel E. Rodriguez C. |  Daniel S. Lopez O. |
