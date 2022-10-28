@@ -191,7 +191,7 @@ class HBNBCommand(cmd.Cmd):
         if command == ".all()":
             print(print_list)
             return False
-        if command == ".count":
+        if command == ".count()":
             print(count)
             return False
         if command.startswith(".show"):
