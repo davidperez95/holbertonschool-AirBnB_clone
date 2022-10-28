@@ -217,11 +217,9 @@ class HBNBCommand(cmd.Cmd):
                     return False
             print("** no instance found **")
             return False
-
         if command.startswith(".update"):
             args_command = command.strip('.update(""")')
             args = args_command.split()
-            print(args)
             if len(args) < 1:
                 print("** instance id missiing **")
                 return False
@@ -232,9 +230,8 @@ class HBNBCommand(cmd.Cmd):
                 print("** value missing **")
                 return False
             number_id = args[0].strip('",')
-            attribute = args[1].strip('",')
+            attribute = args[1].strip('"",')
             value_attri = args[2].strip('"')
-            value_attri = f'"{value_attri}"'
             for key, value in all_dict.items():
                 if f"{name_class}.{number_id}" == key:
                     setattr(value, attribute, value_attri)
