@@ -1,4 +1,4 @@
-#AirBnB clone console
+## AirBnB clone console
 `holbertonschool-AirBnB_clone project`
 
 [![65f4a1dd9c51265f49d0.png](https://i.postimg.cc/RFYVF6GW/65f4a1dd9c51265f49d0.png)](https://postimg.cc/5YwMKthJ)
@@ -222,3 +222,7 @@ User$
 </p>
 
 </details>
+
+|                 COLLABORATORS                     |
+-----------------------------------------------------
+|  David Perez  |  Manu Rodriguez  |  Daniel Lopez  |
